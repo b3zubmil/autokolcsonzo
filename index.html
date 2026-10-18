@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="hu">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Autókölcsönző</title>
+
+		<link rel="stylesheet" href="./style.css" />
+		<script src="./main.js" defer></script>
+	</head>
+	<body>
+		<header>
+			<div id="header-left-side">
+				<div class="brand-icon">A</div>
+				<div id="header-title">Autókölcsönző</div>
+			</div>
+			<div id="header-right-side">
+				<button id="add-item" type="button">Hozzáadás</button>
+				<button id="edit-item" type="button" disabled>Módosítás</button>
+				<button id="remove-item" type="button" disabled>Törlés</button>
+			</div>
+		</header>
+		<main class="page-content">
+			<section class="page-heading">
+				<h1>Bérlési adatok</h1>
+				<div class="counters">
+					<div class="counter">
+						<span>Nyilvántartott rekordok</span>
+						<strong id="record-count">0</strong>
+					</div>
+					<div class="counter">
+						<span>Kiválasztott rekord</span>
+						<strong id="selected-count">0 / 1</strong>
+					</div>
+				</div>
+			</section>
+			<section class="table-card">
+				<div class="table-header">
+					<h2>Megrendelések</h2>
+					<p>Válassz ki egy sort a módosításhoz vagy törléshez.</p>
+				</div>
+				<table>
+					<thead>
+						<tr>
+							<th>Megrendelő</th>
+							<th>Személyigazolvány</th>
+							<th>Rendszám</th>
+							<th>Autó típusa</th>
+							<th>Kilométeróra</th>
+						</tr>
+					</thead>
+					<tbody id="table-body"></tbody>
+				</table>
+				<div id="empty-state">
+					<h3>Még nincsenek megrendelések</h3>
+					<p>A nyilvántartás üres. A Hozzáadás gombbal hozhatsz létre új rekordot.</p>
+				</div>
+			</section>
+		</main>
+		<div id="form" class="modal">
+			<div id="form-container">
+				<div class="form-header">
+					<div>
+						<h2 id="form-title">Új megrendelés</h2>
+						<p id="form-description">Add meg a megrendelő és a bérelt autó adatait.</p>
+					</div>
+					<button id="close-form" class="close-button" type="button">&times;</button>
+				</div>
+				<form id="order-form">
+					<div class="form-section-title">Megrendelő adatai</div>
+					<div class="group">
+						<label for="order-name">Megrendelő neve</label>
+						<input type="text" id="order-name" placeholder="pl. Kis Pista" maxlength="100" autocomplete="off" required />
+					</div>
+					<div class="group">
+						<label for="order-identity">Személyigazolvány száma</label>
+						<input type="text" id="order-identity" placeholder="pl. 123456AE" maxlength="30" autocomplete="off" required />
+					</div>
+					<div class="form-section-title">Bérelt autó adatai</div>
+					<div class="group">
+						<label for="order-plate">Autó rendszáma</label>
+						<input type="text" id="order-plate" placeholder="pl. ABC-123" maxlength="15" autocomplete="off" required />
+					</div>
+					<div class="group">
+						<label for="order-type">Autó típusa</label>
+						<input type="text" id="order-type" placeholder="pl. Opel Corsa" maxlength="100" autocomplete="off" required />
+					</div>
+					<div class="group">
+						<label for="order-km">Kilométeróra állása</label>
+						<div class="input-with-suffix">
+							<input type="number" id="order-km" placeholder="pl. 154000" min="0" max="99999999" step="1" required />
+							<span>km</span>
+						</div>
+					</div>
+					<p id="form-error" class="form-error"></p>
+					<div class="form-actions">
+						<button id="cancel-form" class="secondary-button" type="button">Mégse</button>
+						<button id="submit-button" class="primary-button" type="submit">Megrendelés mentése</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</body>
+</html>
